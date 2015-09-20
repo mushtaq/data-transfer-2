@@ -6,7 +6,8 @@ lazy val commonSettings = Seq(
   transitiveClassifiers in Global := Seq(Artifact.SourceClassifier),
   updateOptions := updateOptions.value.withCachedResolution(true),
   libraryDependencies += "me.chrons" %%% "boopickle" % "1.1.0",
-  libraryDependencies += "com.softwaremill.macwire" %% "macros" % "1.0.7"
+  libraryDependencies += "com.softwaremill.macwire" %% "macros" % "1.0.7",
+  libraryDependencies += "com.lihaoyi" %%% "upickle" % "0.3.6"
 )
 
 lazy val backend = project.in(file("backend"))
@@ -17,11 +18,12 @@ lazy val backend = project.in(file("backend"))
   )
   .dependsOn(sharedJvm)
 
+lazy val aggProjects = (clients :+ backend).map(Project.projectToRef)
 
-lazy val frontend = (project in file("frontend"))
+lazy val frontend = project.in(file("frontend"))
   .enablePlugins(PlayScala)
   .dependsOn(sharedJvm)
-  .aggregate(clients.map(Project.projectToRef): _*)
+  .aggregate(aggProjects: _*)
   .settings(commonSettings: _*)
   .settings(
     scalaJSProjects := clients,
