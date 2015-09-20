@@ -1,6 +1,4 @@
-package tmt.wavefront
-
-import tmt.media.MediaAssembly
+package tmt.app
 
 import scala.concurrent.Await
 import scala.concurrent.duration._

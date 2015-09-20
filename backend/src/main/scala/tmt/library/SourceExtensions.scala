@@ -1,9 +1,8 @@
 package tmt.library
 
+import akka.stream.Materializer
 import akka.stream.scaladsl._
-import akka.stream.{Materializer, OverflowStrategy}
 import org.reactivestreams.Publisher
-import tmt.common.Sources
 import tmt.integration.bridge.Connector
 
 import scala.concurrent.duration.FiniteDuration

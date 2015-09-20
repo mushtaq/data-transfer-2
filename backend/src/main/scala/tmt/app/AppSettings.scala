@@ -1,10 +1,9 @@
-package tmt.common
+package tmt.app
 
 import java.net.InetSocketAddress
 
 import akka.http.scaladsl.Http
 import akka.http.scaladsl.model.Uri
-import collection.JavaConverters._
 import scala.util.Try
 
 class AppSettings(actorConfigs: ActorConfigs) {

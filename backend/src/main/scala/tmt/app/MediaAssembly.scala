@@ -1,12 +1,13 @@
-package tmt.media
+package tmt.app
 
-import akka.actor.{Props, ActorSystem}
+import akka.actor.ActorSystem
 import akka.stream.ActorMaterializer
-import tmt.common._
-import tmt.common.models.{ImageMetric, Image}
-import tmt.media.client._
-import tmt.media.server._
-import tmt.pubsub.{Subscriber, Publisher}
+import tmt.common.models.{Image, ImageMetric}
+import tmt.io._
+import tmt.clients._
+import tmt.pubsub.Subscriber
+import tmt.server._
+import tmt.transformations.{MetricsTransformations, ImageTransformations}
 import tmt.wavefront._
 
 class MediaAssembly(name: String, env: String = "dev") {

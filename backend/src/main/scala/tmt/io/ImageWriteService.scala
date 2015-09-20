@@ -1,4 +1,4 @@
-package tmt.media.server
+package tmt.io
 
 import java.io.File
 import java.nio.file.Files
@@ -6,6 +6,7 @@ import java.nio.file.Files
 import akka.stream.io.SynchronousFileSink
 import akka.stream.scaladsl.{Sink, Source}
 import akka.util.ByteString
+import tmt.app.{ActorConfigs, AppSettings}
 import tmt.common._
 import tmt.common.models.Image
 import tmt.library.SourceExtensions.RichSource
@@ -32,15 +33,4 @@ class ImageWriteService(actorConfigs: ActorConfigs, settings: AppSettings) {
     println(s"writing to $file")
     Files.write(file.toPath, data)
   }(settings.fileIoDispatcher)
-}
-
-class MovieWriteService(actorConfigs: ActorConfigs, settings: AppSettings) {
-
-  import actorConfigs._
-
-  def copyMovie(name: String, byteArrays: Source[ByteString, Any]) = {
-    val file = new File(s"${settings.moviesOutputDir}/$name")
-    println(s"writing to $file")
-    byteArrays.runWith(SynchronousFileSink(file)).map(_ => ())
-  }
 }

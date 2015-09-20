@@ -1,11 +1,12 @@
-package tmt.wavefront
+package tmt.server
 
 import akka.http.scaladsl.server.Directives._
 import akka.util.ByteString
-import tmt.common.ActorConfigs
+import tmt.app.ActorConfigs
+import tmt.io.ImageReadService
 import tmt.library.SourceExtensions.RichSource
 import tmt.marshalling.BinaryMarshallers
-import tmt.media.server.ImageReadService
+import tmt.transformations.{ImageTransformations, MetricsTransformations}
 
 class RouteInstances(
   routeFactory: RouteFactory,

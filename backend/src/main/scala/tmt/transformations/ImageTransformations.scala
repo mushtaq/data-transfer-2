@@ -1,11 +1,12 @@
-package tmt.wavefront
+package tmt.transformations
 
 import akka.http.scaladsl.model.DateTime
 import akka.stream.scaladsl.Source
-import tmt.common.ActorConfigs
+import tmt.app.ActorConfigs
 import tmt.common.models.{Image, ImageMetric}
-import tmt.media.server.ImageWriteService
-import tmt.pubsub.{Subscriber, Publisher}
+import tmt.io.ImageWriteService
+import tmt.server.{Role, Subscriber}
+import tmt.wavefront.Role
 
 class ImageTransformations(
   imageWriteService: ImageWriteService,

@@ -1,6 +1,8 @@
-package tmt.common
+package tmt.io
 
 import java.io.File
+
+import tmt.app.AppSettings
 
 class Producer(appSettings: AppSettings) {
   def numbers() = Iterator.from(1)

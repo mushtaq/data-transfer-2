@@ -1,11 +1,10 @@
-package tmt.pubsub
+package tmt.server
 
 import akka.cluster.pubsub.DistributedPubSub
 import akka.cluster.pubsub.DistributedPubSubMediator.{Publish, Subscribe, Unsubscribe}
 import akka.stream.scaladsl.{Sink, Source}
-import tmt.common.ActorConfigs
+import tmt.app.ActorConfigs
 import tmt.integration.bridge.Connector
-import tmt.wavefront.Role
 
 class Publisher(actorConfigs: ActorConfigs) {
   import actorConfigs._

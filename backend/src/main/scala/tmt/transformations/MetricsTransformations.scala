@@ -1,8 +1,9 @@
-package tmt.wavefront
+package tmt.transformations
 
 import akka.stream.scaladsl.Source
 import tmt.common.models.{CumulativeMetric, ImageMetric, PerSecMetric}
-import tmt.pubsub.Subscriber
+import tmt.server.{Role, Subscriber}
+import tmt.wavefront.Role
 
 import scala.concurrent.duration.DurationInt
 

@@ -1,11 +1,13 @@
-package tmt.media.server
+package tmt.server
 
 import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server.Route
 import akka.stream.scaladsl.{Sink, Source}
 import akka.util.ByteString
+import tmt.app.CustomDirectives
 import tmt.common._
 import tmt.common.models.Image
+import tmt.io.{ImageReadService, ImageWriteService, MovieReadService, MovieWriteService}
 import tmt.marshalling.BinaryMarshallers
 
 class MediaRoute(
@@ -15,28 +17,7 @@ class MediaRoute(
   movieWriteService: MovieWriteService
 ) extends BinaryMarshallers with CustomDirectives {
 
-  val route = staticRoute ~ movieRoute ~ imageRoute
-
-  lazy val staticRoute: Route = {
-    pathSingleSlash {
-      getFromResource("web/index-dev.html")
-    } ~
-      path("index-prod") {
-        getFromResource("web/index-prod.html")
-      } ~
-      path("demo-dev") {
-        getFromResource("web/demo-dev.html")
-      } ~
-      path("demo-prod") {
-        getFromResource("web/demo-prod.html")
-      } ~
-      path("data-transfer-launcher.js") {
-        getFromResource("data-transfer-launcher.js")
-      } ~
-      path("data-transfer-fastopt.js") {
-        getFromResource("data-transfer-fastopt.js")
-      }
-  }
+  val route = movieRoute ~ imageRoute
 
   lazy val movieRoute: Route = {
     path("movies" / "list") {

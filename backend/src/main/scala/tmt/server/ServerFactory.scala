@@ -1,6 +1,7 @@
-package tmt.wavefront
+package tmt.server
 
-import tmt.common.{ActorConfigs, AppSettings, Server}
+import tmt.app.{ActorConfigs, AppSettings}
+import tmt.common.ActorConfigs
 
 class ServerFactory(
   routeInstances: RouteInstances,

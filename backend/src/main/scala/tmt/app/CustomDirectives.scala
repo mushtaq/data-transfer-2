@@ -1,4 +1,4 @@
-package tmt.common
+package tmt.app
 
 import akka.http.scaladsl.model.ws.{Message, UpgradeToWebsocket}
 import akka.http.scaladsl.server._

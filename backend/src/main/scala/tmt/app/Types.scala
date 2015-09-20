@@ -1,4 +1,4 @@
-package tmt.common
+package tmt.app
 
 import akka.http.scaladsl.marshalling.Marshaller
 import akka.http.scaladsl.model.HttpEntity.Chunked

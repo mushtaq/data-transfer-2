@@ -1,4 +1,4 @@
-package tmt.media.client
+package tmt.clients
 
 import java.net.InetSocketAddress
 

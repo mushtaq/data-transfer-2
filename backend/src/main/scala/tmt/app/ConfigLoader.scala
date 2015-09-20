@@ -1,4 +1,4 @@
-package tmt.common
+package tmt.app
 
 import com.typesafe.config.{ConfigResolveOptions, ConfigParseOptions, ConfigFactory}
 import collection.JavaConverters._

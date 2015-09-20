@@ -1,4 +1,4 @@
-package tmt.media.server
+package tmt.io
 
 import java.io.File
 import java.nio.file.Files
@@ -7,6 +7,7 @@ import akka.http.scaladsl.model.ws.BinaryMessage
 import akka.stream.io.SynchronousFileSource
 import akka.stream.scaladsl.Source
 import akka.util.ByteString
+import tmt.app.{ActorConfigs, AppSettings}
 import tmt.common._
 import tmt.common.models.Image
 
@@ -28,11 +29,3 @@ class ImageReadService(actorConfigs: ActorConfigs, settings: AppSettings, produc
   }(settings.fileIoDispatcher)
 }
 
-class MovieReadService(settings: AppSettings) {
-  def sendMovie(name: String) = {
-    val file = new File(s"${settings.moviesInputDir}/$name")
-    println(s"reading from $file")
-    SynchronousFileSource(file)
-  }
-  def listMovies = Source(() => new File(settings.moviesInputDir).list().iterator)
-}

@@ -1,4 +1,4 @@
-package tmt.common
+package tmt.app
 
 import akka.actor.ActorSystem
 import akka.stream.Materializer

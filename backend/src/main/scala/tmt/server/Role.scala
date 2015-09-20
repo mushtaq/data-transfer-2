@@ -1,4 +1,4 @@
-package tmt.wavefront
+package tmt.server
 
 import enumeratum.{Enum, EnumEntry}
 
