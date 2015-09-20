@@ -2,7 +2,7 @@ package tmt.app
 
 import org.scalajs.dom._
 import tmt.common.models.{CumulativeMetric, PerSecMetric}
-import tmt.common.{Hosts, CanvasControls, CumulativeControls, PerSecControls}
+import tmt.common.{CanvasControls, CumulativeControls, PerSecControls}
 import tmt.images.ImageRendering
 import tmt.metrics.MetricsRendering
 
@@ -12,35 +12,30 @@ import scala.scalajs.js.annotation.JSExport
 object WebsocketApp extends JSApp {
 
   @JSExport
-  override def main() = {
-    showImages("dev")
-    cumulativeMetrics("dev")
-    perSecMetrics("dev")
-  }
+  override def main() = ()
 
   @JSExport
-  def showImages(env: String): Unit = {
+  def showImages(url: String): Unit = {
     CanvasControls.button.onclick = { e: Event =>
-
-      val socket = new WebSocket(s"ws://${Hosts.getHost(env, "metrics-agg")}:8002/image-source")
+      val socket = new WebSocket(url)
       socket.binaryType = "arraybuffer"
       ImageRendering.drain(socket)
     }
   }
 
   @JSExport
-  def perSecMetrics(env: String): Unit = {
+  def perSecMetrics(url: String): Unit = {
     PerSecControls.button.onclick = { e: Event =>
-      val socket = new WebSocket(s"ws://${Hosts.getHost(env, "metrics-agg")}:8006/metrics-per-sec")
+      val socket = new WebSocket(url)
       socket.binaryType = "arraybuffer"
       MetricsRendering.render[PerSecMetric](socket, PerSecControls.span)
     }
   }
 
   @JSExport
-  def cumulativeMetrics(env: String): Unit = {
+  def cumulativeMetrics(url: String): Unit = {
     CumulativeControls.button.onclick = { e: Event =>
-      val socket = new WebSocket(s"ws://${Hosts.getHost(env, "metrics-agg")}:8006/metrics-cumulative")
+      val socket = new WebSocket(url)
       socket.binaryType = "arraybuffer"
       MetricsRendering.render[CumulativeMetric](socket, CumulativeControls.span)
     }

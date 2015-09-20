@@ -26,6 +26,7 @@ lazy val frontend = project.in(file("frontend"))
   .aggregate(aggProjects: _*)
   .settings(commonSettings: _*)
   .settings(
+    routesGenerator := InjectedRoutesGenerator,
     scalaJSProjects := clients,
     pipelineStages := Seq(scalaJSProd, gzip),
     libraryDependencies ++= Seq(
