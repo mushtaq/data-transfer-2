@@ -6,7 +6,6 @@ import tmt.app.ActorConfigs
 import tmt.common.models.{Image, ImageMetric}
 import tmt.io.ImageWriteService
 import tmt.server.{Role, Subscriber}
-import tmt.wavefront.Role
 
 class ImageTransformations(
   imageWriteService: ImageWriteService,

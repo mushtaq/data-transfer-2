@@ -5,10 +5,8 @@ import akka.stream.ActorMaterializer
 import tmt.common.models.{Image, ImageMetric}
 import tmt.io._
 import tmt.clients._
-import tmt.pubsub.Subscriber
 import tmt.server._
 import tmt.transformations.{MetricsTransformations, ImageTransformations}
-import tmt.wavefront._
 
 class MediaAssembly(name: String, env: String = "dev") {
   import com.softwaremill.macwire._

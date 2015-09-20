@@ -5,7 +5,6 @@ import java.net.InetSocketAddress
 import akka.http.scaladsl.Http
 import akka.stream.scaladsl.Sink
 import tmt.app.{ActorConfigs, Types}
-import tmt.common.ActorConfigs
 
 import scala.util.{Failure, Success}
 

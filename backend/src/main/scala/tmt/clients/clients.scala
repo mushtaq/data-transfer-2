@@ -5,7 +5,6 @@ import java.net.InetSocketAddress
 import akka.http.scaladsl.model._
 import akka.stream.scaladsl.{FlattenStrategy, Source, Flow}
 import tmt.app.{ActorConfigs, AppSettings}
-import tmt.common.ActorConfigs
 import tmt.library.InetSocketAddressExtensions.RichInetSocketAddress
 import tmt.library.ResponseExtensions.RichResponse
 import tmt.marshalling.BFormat

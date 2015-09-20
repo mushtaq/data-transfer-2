@@ -5,7 +5,6 @@ import akka.http.scaladsl.server.Directives._
 import akka.http.scaladsl.server._
 import akka.stream.scaladsl.{Sink, Source}
 import tmt.app.{ActorConfigs, AppSettings, CustomDirectives, Types}
-import tmt.common.ActorConfigs
 import tmt.library.SourceExtensions.RichSource
 import tmt.marshalling.BFormat
 
