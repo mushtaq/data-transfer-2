@@ -28,7 +28,6 @@ class MediaAssembly(name: String, env: String = "dev") {
   lazy val movieReadService                   = wire[MovieReadService]
   lazy val imageWriteService                  = wire[ImageWriteService]
   lazy val movieWriteService                  = wire[MovieWriteService]
-  lazy val mediaRoute      : MediaRoute       = wire[MediaRoute]
 
   lazy val producingClientFactory = wire[ProducingClientFactory]
   lazy val consumingClientFactory = wire[ConsumingClientFactory]

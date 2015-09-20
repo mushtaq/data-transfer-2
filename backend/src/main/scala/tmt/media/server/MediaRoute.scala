@@ -17,7 +17,6 @@ class MediaRoute(
 
   val route = staticRoute ~ movieRoute ~ imageRoute
 
-  
   lazy val staticRoute: Route = {
     pathSingleSlash {
       getFromResource("web/index-dev.html")

@@ -5,14 +5,13 @@ import akka.util.ByteString
 import tmt.common.ActorConfigs
 import tmt.library.SourceExtensions.RichSource
 import tmt.marshalling.BinaryMarshallers
-import tmt.media.server.{ImageReadService, MediaRoute}
+import tmt.media.server.ImageReadService
 
 class RouteInstances(
   routeFactory: RouteFactory,
   imageTransformations: ImageTransformations,
   metricsTransformations: MetricsTransformations,
   imageReadService: ImageReadService,
-  mediaRoute: MediaRoute,
   actorConfigs: ActorConfigs
 ) extends BinaryMarshallers {
 

@@ -11,12 +11,12 @@ lazy val commonSettings = Seq(
 )
 
 lazy val backend = project.in(file("backend"))
+  .dependsOn(sharedJvm)
   .settings(commonSettings: _*)
   .settings(
     fork := true,
     libraryDependencies ++= Dependencies.jvmLibs
   )
-  .dependsOn(sharedJvm)
 
 lazy val aggProjects = (clients :+ backend).map(Project.projectToRef)
 
