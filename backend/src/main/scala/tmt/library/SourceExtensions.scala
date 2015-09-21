@@ -1,6 +1,5 @@
 package tmt.library
 
-import akka.actor.ActorSystem
 import akka.stream.Materializer
 import akka.stream.scaladsl._
 import org.reactivestreams.Publisher
@@ -29,10 +28,10 @@ object SourceExtensions {
 
     def multicast(implicit mat: Materializer) = Source(source.runWith(Sink.fanoutPublisher(2, 2)))
 
-    def hotUnicast(implicit mat: Materializer, system: ActorSystem) = hot(Sink.publisher)
-    def hotMulticast(implicit mat: Materializer, system: ActorSystem) = hot(Sink.fanoutPublisher(2, 2))
+    def hotUnicast(implicit mat: Materializer) = hot(Sink.publisher)
+    def hotMulticast(implicit mat: Materializer) = hot(Sink.fanoutPublisher(2, 2))
 
-    def hot(sink: Sink[Out, Publisher[Out]])(implicit mat: Materializer, system: ActorSystem) = {
+    def hot(sink: Sink[Out, Publisher[Out]])(implicit mat: Materializer) = {
       val (actorRef, hotSource) = Connector.coupling(sink)
       source.runForeach(x => actorRef ! x)
       hotSource
